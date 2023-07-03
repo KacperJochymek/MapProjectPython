@@ -1,4 +1,5 @@
-from Autobusy.funkcje2 import my_gui2, create_user_autobus, show_user_list_autobus, my_fellow_autobus, view_user_autobus, \
+from Autobusy.funkcje2 import my_gui2, create_user_autobus, show_user_list_autobus, my_fellow_autobus, \
+    view_user_autobus, \
     delete_user_autobus
 from Autobusy.dane2 import user_list2
 from start import start_gui
@@ -47,8 +48,5 @@ while logging:
     else:
         logging = False
 
-
 # TODO OBIEKTÓWKA
 # TODO DODAJ funkcje generowania MAPY DO GUI
-
-

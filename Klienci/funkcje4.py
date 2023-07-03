@@ -12,22 +12,22 @@ def say_hello_klienci(tekst):
 
 
 def prepare_group_of_maps_klienci(lista_uzytkownikow: list) -> None:
-    for user in lista_uzytkownikow[1:]:
-        wspolrzedne = get_coooridinates4(user["miejsce"])
-        tekst = get_user4(user["name"], user['klienci'], user["miejsce"])
+    for user in lista_uzytkownikow[0:]:
+        wspolrzedne = get_coooridinates_klienci(user["miejsce"])
+        tekst = get_user_klienci(user["name"], user['klienci'], user["miejsce"])
         id = user["id"]
-        prepare_map4(wspolrzedne, tekst, id)
+        prepare_map_klienci(wspolrzedne, tekst, id)
         # print(f'trwa przygotowanie mapy {user["miejsce"]} nr {id} ')
 
 
 def show_user_list_klienci(lista_uzytkownikow: list) -> None:
-    for user in lista_uzytkownikow[1:]:
-        print(get_user4(user["name"], user["klienci"], user["miejsce"]))
+    for user in lista_uzytkownikow[0:]:
+        print(get_user_klienci(user["name"], user["klienci"], user["miejsce"]))
 
 
 def get_user_klienci(nick, klienci, miejsce):
     return f'Twój znajomy {nick} opublikował {klienci} miejscowosc:{miejsce}, ' \
-           f'wspolrzedne {get_coooridinates4(miejsce)}'
+           f'wspolrzedne {get_coooridinates_klienci(miejsce)}'
 
 
 def get_coooridinates_klienci(nazwa_miejscowosci: str) -> list:
@@ -72,11 +72,13 @@ def create_user_klienci():
     print(new_user)
     return new_user
 
+
 def delete_user_klienci(user_list2: list) -> list:
     zmienna = input('Podaj nazwisko klienta do usuniecia')
     updated_list = [i for i in user_list2 if i['klienci'] != zmienna]
-    print('Poprawnie usunieto klienta!')
+    print('Poprawnie usunieto klienta:', zmienna)
     return updated_list
+
 
 def my_gui4():
     print('---------------------------------------------')
@@ -113,6 +115,3 @@ def view_user_klienci(user_list2: list[dict]) -> None:
                 print(f'Nazwisko klienta: {matching_names[0]}')
     else:
         print('Nie znaleziono klienta o podanym nazwisku.')
-
-
-

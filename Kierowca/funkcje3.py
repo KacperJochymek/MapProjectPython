@@ -12,22 +12,22 @@ def say_hello_kierowca(tekst):
 
 
 def prepare_group_of_maps_kierowca(lista_uzytkownikow: list) -> None:
-    for user in lista_uzytkownikow[1:]:
-        wspolrzedne = get_coooridinates3(user["miejsce"])
-        tekst = get_user3(user["name"],user["kierowca"], user["miejsce"])
+    for user in lista_uzytkownikow[0:]:
+        wspolrzedne = get_coooridinates_kierowca(user["miejsce"])
+        tekst = get_user_kierowca(user["name"], user["kierowca"], user["miejsce"])
         id = user["id"]
-        prepare_map3(wspolrzedne, tekst, id)
+        prepare_map_kierowca(wspolrzedne, tekst, id)
         # print(f'trwa przygotowanie mapy {user["miejsce"]} nr {id} ')
 
 
 def show_user_list_kierowca(lista_uzytkownikow: list) -> None:
     for user in lista_uzytkownikow[0:]:
-        print(get_user3(user["name"], user['kierowca'], user["miejsce"]))
+        print(get_user_kierowca(user["name"], user['kierowca'], user["miejsce"]))
 
 
 def get_user_kierowca(name, kierowca, miejsce):
     return f'Twój znajomy {name} dodał nowego kierowcę: {kierowca} w miejscowosci:{miejsce}, ' \
-           f'wspolrzedne {get_coooridinates3(miejsce)}'
+           f'wspolrzedne {get_coooridinates_kierowca(miejsce)}'
 
 
 def get_coooridinates_kierowca(nazwa_miejscowosci: str) -> list:
@@ -76,7 +76,7 @@ def create_user_kierowca():
 def delete_user_kierowca(user_list2: list) -> list:
     zmienna = input('Podaj imię kierowcy do usuniecia')
     updated_list = [i for i in user_list2 if i['kierowca'] != zmienna]
-    print('Kierowca usunięty poprawnie')
+    print('Kierowca usunięty poprawnie:', zmienna)
     return updated_list
 
 
@@ -110,5 +110,3 @@ def view_user_kierowca(user_list2: list[dict]) -> None:
         print(f'Imię kierowcy: {selected_user[0]["kierowca"]}')
     else:
         print('Nie znaleziono kierowcy o podanym imieniu.')
-
-

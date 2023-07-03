@@ -70,7 +70,7 @@ def create_user_autobus():
 def delete_user_autobus(user_list2: list) -> list:
     zmienna = input('Podaj numer autobusu do usunięcia: ')
     updated_list = [i for i in user_list2 if i['nr_autobusu'] != zmienna]
-    print('Poprawnie usunięto autobus')
+    print('Poprawnie usunięto autobus o numerze:', zmienna)
     return updated_list
 
 
@@ -83,6 +83,7 @@ def my_gui2():
     print('|        2. Dodaj autobus (create)           |')
     print('|        3. Usuń autobus (delete)            |')
     print('|        4. Wyświetl autobus                 |')
+    print('|        5. Wyświetl autobus                 |')
     print('|        0. Powrót do menu głównego          |')
     print('---------------------------------------------')
 
