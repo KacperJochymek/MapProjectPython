@@ -81,25 +81,60 @@ def delete_user_kierowca(user_list2: list) -> list:
 
 
 def my_gui3():
-    print('---------------------------------------------')
-    print('-                Lista Kierowców                   -')
-    print('---------------------------------------------')
-    print('|    Dostępne funkcje                       |')
-    print('|        1. Wyświetl listę kierowców   |')
-    print('|        2. Dodaj kierowcę (create)        |')
-    print('|        3. Usun kierowcę (delete)         |')
-    print('|        4. Wyswietl kierowcę              |')
-    print('|        0. Powrót do menu głównego          |')
-    print('---------------------------------------------')
+    print('------------------------------------------------------------')
+    print('-                       Lista Kierowców                    -')
+    print('------------------------------------------------------------')
+    print('|                        Dostępne funkcje                  |')
+    print('|        1. Wyświetl listę kierowców                       |')
+    print('|        2. Dodaj kierowcę (create)                        |')
+    print('|        3. Usun kierowcę (delete)                         |')
+    print('|        4. Wyswietl kierowcę                              |')
+    print('|        5. Wyswietl kierowcę wybranej linii autobusowej   |')
+    print('|        0. Powrót do menu głównego                        |')
+    print('------------------------------------------------------------')
 
 
-def my_fellow_kierowca(name: str, miejsce: str, kierowca: list[str]) -> None:
-    print('---------------------------------------------')
-    print(f'         {name}                            ')
-    print('---------------------------------------------')
-    print(f'    kierowca: {kierowca}                        ')
-    print(f'    miejsce: {miejsce}                      ')
-    print('---------------------------------------------')
+# def my_fellow_kierowca(kierowca: str, user_list2: list) -> None:
+#     for user in user_list2:
+#         if kierowca in user['kierowca']:
+#                 name = user['name']
+#                 miejsce = user['miejsce']
+#                 linia_autobus = user['linia_autobus']
+#                 klienci = user['klienci']
+#
+#                 print('---------------------------------------------')
+#                 print(f'         {name}                 ')
+#                 print('---------------------------------------------')
+#                 print(f'    klienci: {klienci}                        ')
+#                 print(f'    miejsce: {miejsce}                      ')
+#                 print(f'    linia_autobus: {linia_autobus}                      ')
+#                 print('---------------------------------------------')
+#                 break
+#     else:
+#         print('Nie znaleziono kierowcy o podanym imieniu.')
+
+def my_fellow_kierowca(linia_autobusu: str, user_list2: list) -> None:
+    print(f'Wybierz linię autobusu, dla której mają zostąc wyświetleni kierowcy')
+    linia = input("Podaj linię autobusu: ")
+
+    for user in user_list2:
+        if 'nr_autobusu' in user and 'kierowca' in user and 'linia_autobus' in user:
+            kierowca = user['kierowca']
+            linie_autobusy = user['linia_autobus']
+
+            if linia in linie_autobusy:
+                name = user['name']
+                miejsce = user['miejsce']
+
+                print('---------------------------------------------')
+                print(f'         {name}                 ')
+                print('---------------------------------------------')
+                print(f'    kierowca: {(kierowca)}')
+                print(f'    miejsce: {miejsce}                      ')
+                print('---------------------------------------------')
+                return
+
+    print('Nie znaleziono podanej linii autobusu.')
 
 
 def view_user_kierowca(user_list2: list[dict]) -> None:

@@ -83,7 +83,6 @@ def my_gui2():
     print('|        2. Dodaj autobus (create)           |')
     print('|        3. Usuń autobus (delete)            |')
     print('|        4. Wyświetl autobus                 |')
-    print('|        5. Wyświetl autobus                 |')
     print('|        0. Powrót do menu głównego          |')
     print('---------------------------------------------')
 

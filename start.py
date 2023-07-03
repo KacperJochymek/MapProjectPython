@@ -27,6 +27,5 @@ def start_gui():
         else:
             print('Nieprawidłowy wybór. Wybierz opcję od 0 do 3.')
 
+
 start_gui()
-
-

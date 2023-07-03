@@ -81,27 +81,41 @@ def delete_user_klienci(user_list2: list) -> list:
 
 
 def my_gui4():
-    print('---------------------------------------------')
-    print('-                Lista Klientów                   -')
-    print('---------------------------------------------')
-    print('|    Dostępne funkcje                       |')
-    print('|        1. Wyświetl listę klientów   |')
-    print('|        2. Dodaj klienta (create)        |')
-    print('|        3. Usun klienta (delete)         |')
-    print('|        4. Wyswietl klienta              |')
-    print('|        0. Powrót do menu głównego          |')
-    print('---------------------------------------------')
+    print('-------------------------------------------------------------')
+    print('-                    Lista Klientów                         -')
+    print('-------------------------------------------------------------')
+    print('|              Dostępne funkcje                             |')
+    print('|        1. Wyświetl listę klientów                         |')
+    print('|        2. Dodaj klienta (create)                          |')
+    print('|        3. Usun klienta (delete)                           |')
+    print('|        4. Wyswietl klienta                                |')
+    print('|        5. Wyswietl klienta wybranej linii autobusowej     |')
+    print('|        0. Powrót do menu głównego                         |')
+    print('-------------------------------------------------------------')
 
 
-def my_fellow_klienci(name: str, miejsce: str, postow: int, klienci: list[str]) -> None:
-    print('---------------------------------------------')
-    print(f'         {name}                 ')
-    print('---------------------------------------------')
-    print(f'    klienci: {klienci}                        ')
-    print(f'    miejsce: {miejsce}                      ')
-    for post in klienci:
-        print(f'\tpost uzytkownika {name}: {post}         ')
-    print('---------------------------------------------')
+def my_fellow_klienci(linia_autobusu: str, user_list2: list) -> None:
+    print(f'Wybierz linię autobusu, dla której mają zostąc wyświetleni klienci')
+    linia = input("Podaj linię autobusu: ")
+
+    for user in user_list2:
+        if 'nr_autobusu' in user and 'klienci' in user and 'linia_autobus' in user:
+            klienci = user['klienci']
+            linie_autobusy = user['linia_autobus']
+
+            if linia in linie_autobusy:
+                name = user['name']
+                miejsce = user['miejsce']
+
+                print('---------------------------------------------')
+                print(f'         {name}                 ')
+                print('---------------------------------------------')
+                print(f'    klienci: {(klienci)}')
+                print(f'    miejsce: {miejsce}                      ')
+                print('---------------------------------------------')
+                return
+
+    print('Nie znaleziono podanej linii autobusu.')
 
 
 def view_user_klienci(user_list2: list[dict]) -> None:

@@ -26,19 +26,7 @@ while logging:
                     elif selected_option == '4':
                         view_user_autobus(user_list2)
                     elif selected_option == '5':
-                        user_nick = input('podaj numer autobusu, ktory chcesz wyswietlic ')
-                        fellow_list = [i for i in user_list2 if i['nr_autobusu'] == user_nick][0]['nr_autobusu']
-                        [
-                            [
-                                my_fellow_autobus(
-                                    name=user['name'],
-                                    miejsce=user['miejsce'],
-                                    nr_autobusu=user['nr_autobusu'],
-                                    lista_autobusu=user['linia_autobus']
-                                ) for user in
-                                user_list2 if user['id'] == fellow2
-                            ] for fellow2 in fellow_list
-                        ]
+                        my_fellow_autobus(user_list2)
 
                     selected_option = input('\nWybierz dostępną funkcje i zatwierdz klikając przycisk enter ')
 
