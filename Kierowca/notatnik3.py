@@ -1,5 +1,5 @@
 from Autobusy.dane2 import user_list2
-from Kierowca.funkcje3 import my_gui3, my_fellow3, show_user_list3, delete_user3, view_user3, create_user3
+from Kierowca.funkcje3 import my_gui3, my_fellow_kierowca, show_user_list_kierowca, delete_user_kierowca, view_user_kierowca, create_user_kierowca
 from start import start_gui
 
 licznik = 0
@@ -16,19 +16,19 @@ while logging:
 
                 while selected_option != "0":
                     if selected_option == '1':
-                        show_user_list3(user_list2)
+                        show_user_list_kierowca(user_list2)
                     elif selected_option == '2':
-                        user_list2.append(create_user3())
+                        user_list2.append(create_user_kierowca())
                     elif selected_option == '3':
-                        user_list2 = delete_user3(user_list2)
+                        user_list2 = delete_user_kierowca(user_list2)
                     elif selected_option == '4':
-                        view_user3(user_list2)
+                        view_user_kierowca(user_list2)
                     elif selected_option == '5':
                         user_nick = input('podaj numer kierowcy, ktory chcesz wyswietlic ')
                         fellow_list3 = [i for i in user_list2 if i['kierowca'] == user_nick][0]['kierowca']
                         [
                             [
-                                my_fellow3(
+                                my_fellow_kierowca(
                                     name=user['name'],
                                     miejsce=user['miejsce'],
                                     kierowca=user['kierowca'],

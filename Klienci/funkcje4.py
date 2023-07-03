@@ -7,11 +7,11 @@ import random
 from bs4 import BeautifulSoup
 
 
-def say_hello4(tekst):
+def say_hello_klienci(tekst):
     print(f'Witaj {tekst} ! ')
 
 
-def prepare_group_of_maps4(lista_uzytkownikow: list) -> None:
+def prepare_group_of_maps_klienci(lista_uzytkownikow: list) -> None:
     for user in lista_uzytkownikow[1:]:
         wspolrzedne = get_coooridinates4(user["miejsce"])
         tekst = get_user4(user["name"], user['klienci'], user["miejsce"])
@@ -20,17 +20,17 @@ def prepare_group_of_maps4(lista_uzytkownikow: list) -> None:
         # print(f'trwa przygotowanie mapy {user["miejsce"]} nr {id} ')
 
 
-def show_user_list4(lista_uzytkownikow: list) -> None:
+def show_user_list_klienci(lista_uzytkownikow: list) -> None:
     for user in lista_uzytkownikow[1:]:
         print(get_user4(user["name"], user["klienci"], user["miejsce"]))
 
 
-def get_user4(nick, klienci, miejsce):
+def get_user_klienci(nick, klienci, miejsce):
     return f'Twój znajomy {nick} opublikował {klienci} miejscowosc:{miejsce}, ' \
            f'wspolrzedne {get_coooridinates4(miejsce)}'
 
 
-def get_coooridinates4(nazwa_miejscowosci: str) -> list:
+def get_coooridinates_klienci(nazwa_miejscowosci: str) -> list:
     # 1.pobierz strone
     adres_url = f'https://pl.wikipedia.org/wiki/{nazwa_miejscowosci}'
     res = requests.get(adres_url)
@@ -44,20 +44,20 @@ def get_coooridinates4(nazwa_miejscowosci: str) -> list:
     return [latitude, longitude]
 
 
-def prepare_map4(nazwa_miejscowosci: list, tresc_popup: str, id: int) -> None:
+def prepare_map_klienci(nazwa_miejscowosci: list, tresc_popup: str, id: int) -> None:
     mapka = folium.Map(location=nazwa_miejscowosci, tiles="OpenStreetMap", zoom_start=12)
     folium.Marker(location=nazwa_miejscowosci, popup=f'{tresc_popup}').add_to(mapka)
     mapka.save(f'./mapkaKlienci_{id}.html')
 
 
-def prepare_single_map4(lista_wspolrzednych: list[int], tekst: list[str]) -> None:
+def prepare_single_map_klienci(lista_wspolrzednych: list[int], tekst: list[str]) -> None:
     mapka = folium.Map(location=[52.30, 21.0], tiles="OpenStreetMap", zoom_start=6)
     for index, _ in enumerate(lista_wspolrzednych):
         folium.Marker(location=lista_wspolrzednych[index], popup=f'{tekst[index]}').add_to(mapka)
     mapka.save(f'./mapaKlienci.html')
 
 
-def create_user4():
+def create_user_klienci():
     name = input('podaj nazwe uzytkownika')
     place = input('podaj miejsce uzytkownika')
     klienci = input('podaj nazwisko klienta')
@@ -72,7 +72,7 @@ def create_user4():
     print(new_user)
     return new_user
 
-def delete_user4(user_list2: list) -> list:
+def delete_user_klienci(user_list2: list) -> list:
     zmienna = input('Podaj nazwisko klienta do usuniecia')
     updated_list = [i for i in user_list2 if i['klienci'] != zmienna]
     print('Poprawnie usunieto klienta!')
@@ -91,7 +91,7 @@ def my_gui4():
     print('---------------------------------------------')
 
 
-def my_fellow4(name: str, miejsce: str, postow: int, klienci: list[str]) -> None:
+def my_fellow_klienci(name: str, miejsce: str, postow: int, klienci: list[str]) -> None:
     print('---------------------------------------------')
     print(f'         {name}                 ')
     print('---------------------------------------------')
@@ -102,7 +102,7 @@ def my_fellow4(name: str, miejsce: str, postow: int, klienci: list[str]) -> None
     print('---------------------------------------------')
 
 
-def view_user4(user_list2: list[dict]) -> None:
+def view_user_klienci(user_list2: list[dict]) -> None:
     user_nick = input('Podaj nazwisko klienta do wyświetlenia: ')
     selected_users = [user for user in user_list2 if user_nick in user['klienci']]
 

@@ -1,5 +1,5 @@
-from Autobusy.funkcje2 import my_gui2, create_user2, show_user_list2, my_fellow2, view_user2, \
-    delete_user2
+from Autobusy.funkcje2 import my_gui2, create_user_autobus, show_user_list_autobus, my_fellow_autobus, view_user_autobus, \
+    delete_user_autobus
 from Autobusy.dane2 import user_list2
 from start import start_gui
 
@@ -17,19 +17,19 @@ while logging:
 
                 while selected_option != "0":
                     if selected_option == '1':
-                        show_user_list2(user_list2)
+                        show_user_list_autobus(user_list2)
                     elif selected_option == '2':
-                        user_list2.append(create_user2())
+                        user_list2.append(create_user_autobus())
                     elif selected_option == '3':
-                        user_list2 = delete_user2(user_list2)
+                        user_list2 = delete_user_autobus(user_list2)
                     elif selected_option == '4':
-                        view_user2(user_list2)
+                        view_user_autobus(user_list2)
                     elif selected_option == '5':
                         user_nick = input('podaj numer autobusu, ktory chcesz wyswietlic ')
                         fellow_list = [i for i in user_list2 if i['nr_autobusu'] == user_nick][0]['nr_autobusu']
                         [
                             [
-                                my_fellow2(
+                                my_fellow_autobus(
                                     name=user['name'],
                                     miejsce=user['miejsce'],
                                     nr_autobusu=user['nr_autobusu'],
